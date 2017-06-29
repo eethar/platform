@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="eethar.DCase.home.title">D Cases</span>
+        <button class="btn btn-primary float-right create-d-case" [routerLink]="['/', { outlets: { popup: ['d-case-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="eethar.DCase.home.createLabel">
+            Create new D Case
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="DCases">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="eethar.DCase.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="eethar.DCase.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="eethar.DCase.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="NGO.id"><span jhiTranslate="eethar.DCase.NGO">NGO</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let DCase of DCases ;trackBy: trackId">
+                <td><a [routerLink]="['../d-case', DCase.id ]">{{DCase.id}}</a></td>
+                <td>{{DCase.name}}</td>
+                <td>{{DCase.description}}</td>
+                <td>{{DCase.startDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="DCase.NGO">
+                        <a [routerLink]="['../ngo', DCase.NGO?.id ]" >{{DCase.NGO?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../d-case', DCase.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'd-case/'+ DCase.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'd-case/'+ DCase.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

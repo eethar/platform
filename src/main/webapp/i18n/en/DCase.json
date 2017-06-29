@@ -1,0 +1,25 @@
+{
+    "eethar": {
+        "DCase" : {
+            "home": {
+                "title": "D Cases",
+                "createLabel": "Create a new D Case",
+                "createOrEditLabel": "Create or edit a D Case"
+            },
+            "created": "A new D Case is created with identifier {{ param }}",
+            "updated": "A D Case is updated with identifier {{ param }}",
+            "deleted": "A D Case is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete D Case {{ id }}?"
+            },
+            "detail": {
+                "title": "D Case"
+            },
+            "name": "Name",
+            "description": "Description",
+            "startDate": "Start Date",
+            "NGO": "NGO",
+            "donations": "Donations"
+        }
+    }
+}

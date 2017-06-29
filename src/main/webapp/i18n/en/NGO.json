@@ -1,0 +1,22 @@
+{
+    "eethar": {
+        "NGO" : {
+            "home": {
+                "title": "NG Oes",
+                "createLabel": "Create a new NGO",
+                "createOrEditLabel": "Create or edit a NGO"
+            },
+            "created": "A new NGO is created with identifier {{ param }}",
+            "updated": "A NGO is updated with identifier {{ param }}",
+            "deleted": "A NGO is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete NGO {{ id }}?"
+            },
+            "detail": {
+                "title": "NGO"
+            },
+            "name": "Name",
+            "description": "Description"
+        }
+    }
+}

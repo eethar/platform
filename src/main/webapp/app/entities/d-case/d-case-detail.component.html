@@ -1,0 +1,39 @@
+
+<div *ngIf="DCase">
+    <h2><span jhiTranslate="eethar.DCase.detail.title">D Case</span> {{DCase.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eethar.DCase.name">Name</span></dt>
+        <dd>
+            <span>{{DCase.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="eethar.DCase.description">Description</span></dt>
+        <dd>
+            <span>{{DCase.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="eethar.DCase.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{DCase.startDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eethar.DCase.NGO">NGO</span></dt>
+        <dd>
+            <div *ngIf="DCase.NGO">
+                <a [routerLink]="['/ngo', DCase.NGO?.id]">{{DCase.NGO?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'd-case/'+ DCase.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

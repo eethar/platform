@@ -1,0 +1,41 @@
+
+<div *ngIf="donation">
+    <h2><span jhiTranslate="eethar.donation.detail.title">Donation</span> {{donation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eethar.donation.donerName">Doner Name</span></dt>
+        <dd>
+            <span>{{donation.donerName}}</span>
+        </dd>
+        <dt><span jhiTranslate="eethar.donation.donerEmail">Doner Email</span></dt>
+        <dd>
+            <span>{{donation.donerEmail}}</span>
+        </dd>
+        <dt><span jhiTranslate="eethar.donation.donationAmount">Donation Amount</span></dt>
+        <dd>
+            <span>{{donation.donationAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="eethar.donation.tipAmount">Tip Amount</span></dt>
+        <dd>
+            <span>{{donation.tipAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="eethar.donation.donationDate">Donation Date</span></dt>
+        <dd>
+            <span>{{donation.donationDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'donation/'+ donation.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

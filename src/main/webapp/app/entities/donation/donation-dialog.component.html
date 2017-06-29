@@ -1,0 +1,56 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myDonationLabel" jhiTranslate="eethar.donation.home.createOrEditLabel">Create or edit a Donation</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!donation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="donation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eethar.donation.donerName" for="field_donerName">Doner Name</label>
+            <input type="text" class="form-control" name="donerName" id="field_donerName"
+                [(ngModel)]="donation.donerName"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eethar.donation.donerEmail" for="field_donerEmail">Doner Email</label>
+            <input type="text" class="form-control" name="donerEmail" id="field_donerEmail"
+                [(ngModel)]="donation.donerEmail"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eethar.donation.donationAmount" for="field_donationAmount">Donation Amount</label>
+            <input type="number" class="form-control" name="donationAmount" id="field_donationAmount"
+                [(ngModel)]="donation.donationAmount"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eethar.donation.tipAmount" for="field_tipAmount">Tip Amount</label>
+            <input type="number" class="form-control" name="tipAmount" id="field_tipAmount"
+                [(ngModel)]="donation.tipAmount"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eethar.donation.donationDate" for="field_donationDate">Donation Date</label>
+            <div class="d-flex">
+                <input id="field_donationDate" type="datetime-local" class="form-control" name="donationDate" [(ngModel)]="donation.donationDate"
+                  />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

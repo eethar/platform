@@ -1,0 +1,64 @@
+<div>
+    <h2>
+        <span jhiTranslate="eethar.donation.home.title">Donations</span>
+        <button class="btn btn-primary float-right create-donation" [routerLink]="['/', { outlets: { popup: ['donation-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="eethar.donation.home.createLabel">
+            Create new Donation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="donations">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="donerName"><span jhiTranslate="eethar.donation.donerName">Doner Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="donerEmail"><span jhiTranslate="eethar.donation.donerEmail">Doner Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="donationAmount"><span jhiTranslate="eethar.donation.donationAmount">Donation Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipAmount"><span jhiTranslate="eethar.donation.tipAmount">Tip Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="donationDate"><span jhiTranslate="eethar.donation.donationDate">Donation Date</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let donation of donations ;trackBy: trackId">
+                <td><a [routerLink]="['../donation', donation.id ]">{{donation.id}}</a></td>
+                <td>{{donation.donerName}}</td>
+                <td>{{donation.donerEmail}}</td>
+                <td>{{donation.donationAmount}}</td>
+                <td>{{donation.tipAmount}}</td>
+                <td>{{donation.donationDate | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../donation', donation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'donation/'+ donation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'donation/'+ donation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

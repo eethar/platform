@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="org.eethar.platform.core.entity" v="4.2.2" rws="_149670246717310" Pws="_149670246717310" cws="_149670246717310" sm="false" xs="false" id="_14967024671739" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DCasePK" abs="false" class="DCase" v="true" jbn="false" m="false" rootElement="_14967024671739" id="_1496702470025">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:ath>superyass</jpa:ath>
+        <jpa:jbdf/>
+        <jpa:jbnf/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_149670247660013">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" id="_149670247702914">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="startDate" id="_149670247784915">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1496703220411" v="true" name="donations" id="_149670383574933">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:one-to-many>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_1496703074592" v="true" name="NGO" id="_149670313450222">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:one-to-one>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.List" v="true" name="caseType" id="_149670247890316">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:element-collection>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_149670247002511">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DCase.findAll">
+            <jpa:query>Select e from DCase e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DCase.findByName">
+            <jpa:query>Select c from DCase c where c.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DCase.findByDescription">
+            <jpa:query>Select c from DCase c where c.description=:description</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DCase.findByStartDate">
+            <jpa:query>Select c from DCase c where c.startDate=:startDate</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="NGOPK" abs="false" class="NGO" v="true" jbn="false" m="false" rootElement="_14967024671739" id="_1496703074592">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:ath>superyass</jpa:ath>
+        <jpa:jbdf/>
+        <jpa:jbnf/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_149670308082219">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" id="_149670308143520">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.List" v="true" name="ngoType" id="_149670308283221">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:element-collection>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_149670307459217">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="NGO.findAll">
+            <jpa:query>Select e from NGO e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="NGO.findByName">
+            <jpa:query>Select n from NGO n where n.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="NGO.findByDescription">
+            <jpa:query>Select n from NGO n where n.description=:description</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="DonationPK" abs="false" class="Donation" v="true" jbn="false" m="false" rootElement="_14967024671739" id="_1496703220411">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:ath>superyass</jpa:ath>
+        <jpa:jbdf/>
+        <jpa:jbnf/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="donerName" id="_149670323167726">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="donerEmail" id="_149670341910930">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Float" v="true" name="donationAmount" id="_149670323207027">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Float" v="true" name="tipAmount" id="_149670323226628">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="donationDate" id="_149670340610129">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.List" v="true" name="donerType" id="_149670323078425">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+            </jpa:element-collection>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_149670322041223">
+                <jpa:jbdf/>
+                <jpa:jbnf/>
+                <jpa:bv/>
+                <jpa:kbv/>
+                <jpa:vbv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Donation.findAll">
+            <jpa:query>Select e from Donation e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Donation.findByDonerName">
+            <jpa:query>Select d from Donation d where d.donerName=:donerName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Donation.findByDonationAmount">
+            <jpa:query>Select d from Donation d where d.donationAmount=:donationAmount</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Donation.findByTipAmount">
+            <jpa:query>Select d from Donation d where d.tipAmount=:tipAmount</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Donation.findByDonationDate">
+            <jpa:query>Select d from Donation d where d.donationDate=:donationDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Donation.findByDonerEmail">
+            <jpa:query>Select d from Donation d where d.donerEmail=:donerEmail</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_149670246717310">
+            <i ref="_1496703220411" x="130" y="153">
+                <el/>
+            </i>
+            <i ref="_1496703074592" x="576" y="153">
+                <el/>
+            </i>
+            <i ref="_1496702470025" x="379" y="146">
+                <el/>
+            </i>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>

@@ -24,7 +24,7 @@ export class DCaseDialogComponent implements OnInit {
     ngoes: NGO[];
 
     donations: Donation[];
-    
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,

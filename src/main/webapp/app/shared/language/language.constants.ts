@@ -3,5 +3,5 @@
     They are written in English to avoid character encoding issues (not a perfect solution)
 */
 export const LANGUAGES: string[] = [
-                'en'          
+                'en'
 ];

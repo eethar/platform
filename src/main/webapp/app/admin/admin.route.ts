@@ -10,13 +10,12 @@ import {
 
 import { UserRouteAccessService } from '../shared';
 
-let ADMIN_ROUTES = [
+const ADMIN_ROUTES = [
     docsRoute,
     logsRoute,
     ...userMgmtRoute,
     metricsRoute
 ];
-
 
 export const adminState: Routes = [{
     path: '',

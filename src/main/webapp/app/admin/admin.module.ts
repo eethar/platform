@@ -22,7 +22,6 @@ import {
     UserModalService
 } from './';
 
-
 @NgModule({
     imports: [
         eetharSharedModule,

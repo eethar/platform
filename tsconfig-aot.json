@@ -23,6 +23,9 @@
 
     "angularCompilerOptions": {
         "genDir": "target/aot",
-        "skipMetadataEmit" : true
-    }
+        "skipMetadataEmit": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

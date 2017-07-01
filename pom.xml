@@ -10,8 +10,12 @@
     <name>eethar1.0</name>
 
     <properties>
+
+        <app.context.root>/eethar</app.context.root>
+        
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
         <version.javaee>7.0</version.javaee>
         <version.mysql>5.1.38</version.mysql>
         <version.commons.lang>3.3.2</version.commons.lang>
@@ -193,6 +197,48 @@
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-war</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-war</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                        <configuration>
+                            <warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <detail>true</detail>
+                    <basedir>target/${project.build.finalName}/WEB-INF/</basedir>
+                    <includes>
+                        <include>jboss-web.xml</include>
+                        <include>glassfish-web.xml</include>
+                    </includes>
+                    <token>CONTEXT.ROOT.VALUE.FROM.POM</token>
+                    <value>${app.context.root}</value>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -245,6 +291,7 @@
             </plugin>
         </plugins>
     </build>
+    
     <profiles>
         <profile>
             <id>dev</id>
@@ -362,6 +409,7 @@
             </build>
         </profile>
     </profiles>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
